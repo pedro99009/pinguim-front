@@ -5,6 +5,8 @@ import { getTeams, getPlayersByTeam } from "@/services/api"
 import { TeamCard } from "./components/team-card"
 import { PlayerList } from "./components/player-list"
 import type { Team, Player } from "@/types/api"
+import { Divisions } from "./constants/enum-divisions.const"
+import { DivisionCard } from "./components/division-card"
 
 export default function Page() {
   const [teams, setTeams] = useState<Team[]>([])
@@ -58,34 +60,20 @@ export default function Page() {
     )
   }
 
+  const teamsByDivision: Record<string, Team[]> = Object.values(Divisions).reduce((acc, division) => {
+    acc[division] = teams.filter((team) => team.division === division)
+    return acc
+  }, {} as Record<string, Team[]>)
+
   return (
     <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-8">NBA Teams</h1>
+      <h1 className="text-3xl font-bold mb-8">NBA Teams by Division</h1>
 
-      {teams.length === 0 ? (
-        <div className="text-center text-muted-foreground">No teams found</div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {teams.map((team) => (
-                <TeamCard
-                  key={team.id}
-                  team={team}
-                  onClick={handleTeamSelect}
-                  isSelected={selectedTeam?.id === team.id}
-                />
-              ))}
-            </div>
-          </div>
-          <div>
-            {selectedTeam && players.length > 0 && <PlayerList players={players} teamName={selectedTeam.full_name} />}
-            {selectedTeam && players.length === 0 && (
-              <div className="text-center text-muted-foreground">No players found for {selectedTeam.full_name}</div>
-            )}
-          </div>
-        </div>
-      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Object.entries(teamsByDivision).map(([division, teams]) => (
+          teams.length > 0 && <DivisionCard key={division} division={division} teams={teams} />
+        ))}
+      </div>
     </div>
   )
 }
