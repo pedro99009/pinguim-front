@@ -69,7 +69,7 @@ export default function TeamPage({ params }: { params: { teamId: string } }) {
               <tr key={player.id} className="hover:bg-gray-50">
                 <td className="border p-2">{player.first_name} {player.last_name}</td>
                 <td className="border p-2">{player.position || "-"}</td>
-                <td className="border p-2">{player.height_feet || "-"}</td>
+                <td className="border p-2">{player.height|| "-"}</td>
               </tr>
             ))}
           </tbody>
