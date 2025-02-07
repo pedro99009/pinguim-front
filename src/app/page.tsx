@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { getTeams } from "@/services/api"
 import { TeamCard } from "./components/team-card"
-import type { Team } from "@/types/api"
+import type { Team } from "@/interfaces/api"
 import { Divisions } from "./constants/enum-divisions.const"
 import { DivisionCard } from "./components/division-card"
 

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { Player } from "@/types/api"
+import type { Player } from "@/interfaces/api"
 
 interface PlayerListProps {
   players: Player[]
