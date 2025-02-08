@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { getPlayersByTeam, getTeams } from "@/services/api"
 import type { Player, Team } from "@/interfaces/api"
@@ -17,7 +17,8 @@ type SortableKeys = keyof Pick<Player,
   'college'
 >;
 
-export default function TeamPage({ params }: { params: { teamId: string } }) {
+export default function TeamPage({ params }: { params: Promise<{ teamId: string }> }) {
+  const resolvedParams = use(params)
   const router = useRouter()
   const [team, setTeam] = useState<Team | null>(null)
   const [players, setPlayers] = useState<Player[]>([])
@@ -83,7 +84,7 @@ export default function TeamPage({ params }: { params: { teamId: string } }) {
       try {
         const teamsResponse = await getTeams()
         const allTeams: Team[] = Array.isArray(teamsResponse.data) ? teamsResponse.data : []
-        const selectedTeam = allTeams.find((t) => t.id.toString() === params.teamId)
+        const selectedTeam = allTeams.find((t) => t.id.toString() === resolvedParams.teamId)
 
         if (!selectedTeam) {
           setError("Team not found")
@@ -104,7 +105,7 @@ export default function TeamPage({ params }: { params: { teamId: string } }) {
       }
     }
     fetchData()
-  }, [params.teamId])
+  }, [resolvedParams.teamId])
 
   if (loading) {
     return <div className="flex items-center justify-center min-h-screen">Loading players...</div>
