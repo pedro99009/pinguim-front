@@ -28,3 +28,16 @@ export async function getPlayersByTeam(teamId: number) {
   }
 }
 
+export async function getPlayers() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/allPlayers`)
+    if (!response.ok) {
+      throw new Error("Failed to fetch players")
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error("Error in getPlayersByTeam:", error)
+    throw error
+  }
+}
