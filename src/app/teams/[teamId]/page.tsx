@@ -4,6 +4,7 @@ import { use, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { getPlayersByTeam, getTeams } from "@/services/api"
 import type { Player, Team } from "@/interfaces/api"
+import Header from "@/app/components/Header"
 
 type SortableKeys = keyof Pick<Player, 
   'first_name' | 
@@ -116,6 +117,8 @@ export default function TeamPage({ params }: { params: Promise<{ teamId: string 
   }
 
   return (
+    <>
+    <Header />
     <div className="container mx-auto py-8 px-4">
       <button onClick={() => router.push("/")} className="mb-4 text-blue-500 hover:underline">
         ← Back to teams
@@ -155,5 +158,6 @@ export default function TeamPage({ params }: { params: Promise<{ teamId: string 
         </table>
       </div>
     </div>
-  )
+    </>
+  );
 }

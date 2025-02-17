@@ -7,6 +7,7 @@ import type { Team } from "@/interfaces/api"
 import { Divisions } from "./constants/enum-divisions.const"
 import { DivisionCard } from "./components/division-card"
 import { SearchBar } from "./components/search-bar"
+import Header from "./components/Header"
 
 export default function Page() {
   const [teams, setTeams] = useState<Team[]>([])
@@ -43,7 +44,8 @@ export default function Page() {
   }, {} as Record<string, Team[]>)
 
   return (
-    
+    <>
+    <Header/>
     <div className="container mx-auto py-8 px-4">
       <SearchBar/>
       <h1 className="text-3xl font-bold mb-8">NBA Teams by Division</h1>
@@ -53,5 +55,6 @@ export default function Page() {
         ))}
       </div>
     </div>
+    </>
   )
 }
