@@ -8,7 +8,7 @@ interface TeamCardProps {
 
 export function TeamCard({ team }: TeamCardProps) {
   return (
-    <Link href={`/teams/${team.id}`} passHref>
+    <Link href={`/team/${team.id}`} passHref>
       <Card className="cursor-pointer transition-colors hover:bg-muted">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">

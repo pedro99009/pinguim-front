@@ -21,7 +21,7 @@ export default function PlayerPage({
   useEffect(() => {
     async function fetchData() {
       try {
-        // Get player data
+        console.log(resolvedParams.playerId);
         const playerResponse = await getPlayerById(resolvedParams.playerId);
         const playerData = playerResponse.data;
 

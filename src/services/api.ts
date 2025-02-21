@@ -44,7 +44,7 @@ export async function getPlayers() {
 
 export async function getPlayerById(playerId: string) {
   try {
-    const response = await fetch(`${API_BASE_URL}/players/${playerId}`);
+    const response = await fetch(`${API_BASE_URL}/players?player_ids[]=${playerId}`);
     if (!response.ok) {
       throw new Error("Failed to fetch player details");
     }
