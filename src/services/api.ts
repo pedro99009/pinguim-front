@@ -41,3 +41,17 @@ export async function getPlayers() {
     throw error
   }
 }
+
+export async function getPlayerById(playerId: string) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/players/${playerId}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch player details");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in getPlayerById:", error);
+    throw error;
+  }
+}
