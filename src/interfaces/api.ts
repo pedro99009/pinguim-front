@@ -24,3 +24,36 @@ export interface Team {
     team: Team;
   }
   
+  export interface PlayerStat {
+    id: number;
+    playerName: string;
+    position: string;
+    age: number;
+    games: number;
+    minutesPg: number;
+    fieldGoals: number;
+    fieldAttempts: number | null;
+    fieldPercent: number | null;
+    threeFg: number | null;
+    threeAttempts: number;
+    threePercent: number;
+    twoFg: number;
+    twoAttempts: number;
+    twoPercent: number;
+    effectFgPercent: number;
+    ft: number | null;
+    ftAttempts: number;
+    ftPercent: number;
+    offensiveRb: number;
+    defensiveRb: number;
+    totalRb: number;
+    assists: number;
+    steals: number;
+    blocks: number;
+    turnovers: number;
+    points: number;
+    team: string;
+    season: number;
+    playerId: string;
+  }
+  

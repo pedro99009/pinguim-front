@@ -1,3 +1,5 @@
+import { PlayerStat } from "@/interfaces/api"
+
 const API_BASE_URL = "http://localhost:3001/api/nba"
 
 export async function getTeams() {
@@ -55,3 +57,22 @@ export async function getPlayerById(playerId: string) {
     throw error;
   }
 }
+
+export async function getPlayerStatsByName(name: string): Promise<PlayerStat[]> {
+  try {
+    const response = await fetch(
+      `http://rest.nbaapi.com/api/PlayerDataTotals/name/${name}`
+    );
+    if (!response.ok) {
+      throw new Error("Erro ao buscar estatísticas do jogador");
+    }
+
+    // Aqui, garantimos que o retorno seja um array de PlayerStat
+    const data: PlayerStat[] = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Erro na requisição das estatísticas:", error);
+    throw error;
+  }
+}
+
