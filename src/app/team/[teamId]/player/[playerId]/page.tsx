@@ -127,51 +127,90 @@ export default function PlayerPage({
         </div>
 
         {/* Seção de estatísticas da temporada */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold mb-4">Estatísticas por Temporada</h2>
-          {playerStats.length > 0 && (
-            <div className="mb-4">
-              <label htmlFor="season" className="mr-2 font-medium">Selecionar Temporada:</label>
-              <select
-                id="season"
-                value={selectedSeason || ''}
-                onChange={(e) => setSelectedSeason(Number(e.target.value))}
-                className="border border-gray-300 rounded p-2"
-              >
-                {Array.from(new Set(playerStats.map(stat => stat.season)))
-                  .sort((a, b) => b - a)
-                  .map(season => (
-                  <option key={season} value={season}>{season}</option>
-                ))}
-              </select>
-            </div>
-          )}
+<div className="bg-white rounded-lg shadow-md p-6">
+  <h2 className="text-2xl font-bold mb-4">Estatísticas por Temporada</h2>
 
-          {seasonStats ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <p><span className="font-medium">Jogos:</span> {seasonStats.games}</p>
-                <p><span className="font-medium">Minutos Jogados:</span> {seasonStats.minutesPg}</p>
-                <p><span className="font-medium">Assists:</span> {seasonStats.assists}</p>
-                <p>
-                  <span className="font-medium">True Shooting %:</span> {seasonStats.ftPercent !== null ? seasonStats.ftPercent : '-'}
-                </p>
-                <p>
-                  <span className="font-medium">3P AR:</span> {seasonStats.threeAttempts !== null ? seasonStats.threeAttempts : '-'}
-                </p>
-              </div>
-              <div>
-                <p><span className="font-medium">REB Ofensivo %:</span> {seasonStats.offensiveRb}</p>
-                <p><span className="font-medium">REB Defensivo %:</span> {seasonStats.defensiveRb}</p>
-                <p><span className="font-medium">REB Total %:</span> {seasonStats.totalRb}</p>
-                <p><span className="font-medium">Assist %:</span> {seasonStats.assists}</p>
-                <p><span className="font-medium">Steal %:</span> {seasonStats.steals}</p>
-              </div>
-            </div>
-          ) : (
-            <p>Estatísticas não encontradas para a temporada selecionada.</p>
-          )}
-        </div>
+  {playerStats && playerStats.length > 0 ? (
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Temporada
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Jogos
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Minutos
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Assistências
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              OF. Reb
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              DEF. Reb
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Total Reb
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              %FT
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Tent. 3PT
+            </th>
+            <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Roubos
+            </th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {playerStats
+            .sort((a, b) => b.season - a.season) // ordena da temporada mais recente para a mais antiga
+            .map((stat) => (
+              <tr key={stat.season}>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.season}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.games}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.minutesPg}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.assists}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.offensiveRb}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.defensiveRb}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.totalRb}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.ftPercent !== null ? stat.ftPercent : '-'}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.threeAttempts !== null ? stat.threeAttempts : '-'}
+                </td>
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-700">
+                  {stat.steals}
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <p>Estatísticas não encontradas.</p>
+  )}
+</div>
       </div>
     </>
   );
