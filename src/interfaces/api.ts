@@ -1,59 +1,29 @@
 export interface Team {
-    id: number;
-    conference: string;
-    division: string;
-    city: string;
-    name: string;
-    full_name: string;
-    abbreviation: string;
-  }
+  LEAGUE_ID: number;
+  TEAM_ID: number;
+  MIN_YEAR: string;
+  MAX_YEAR: string;
+  ABBREVIATION: string;
+};
+
+export interface TeamStats {
+  TEAM_ID: number;
+  TEAM_ABBREVIATION: string;
+  TEAM_NAME: string;
+  GP: number;
+  W: number;
+  L: number;
+  MIN: number;
+  DIST_FEET: number;
+  DIST_MILES: number;
+  DIST_MILES_OFF: number;
+  DIST_MILES_DEF: number;
+  AVG_SPEED: number;
+  AVG_SPEED_OFF: number;
+  AVG_SPEED_DEF: number;
+}
+
   
-  export interface Player {
-    id: number;
-    first_name: string;
-    last_name: string;
-    position: string;
-    height: string;
-    weight: string;
-    jersey_number: string;
-    college: string;
-    country: string;
-    draft_year: number;
-    draft_round: number;
-    draft_number: number;
-    team: Team;
-  }
   
-  export interface PlayerStat {
-    id: number;
-    playerName: string;
-    position: string;
-    age: number;
-    games: number;
-    minutesPg: number;
-    fieldGoals: number;
-    fieldAttempts: number | null;
-    fieldPercent: number | null;
-    threeFg: number | null;
-    threeAttempts: number;
-    threePercent: number;
-    twoFg: number;
-    twoAttempts: number;
-    twoPercent: number;
-    effectFgPercent: number;
-    ft: number | null;
-    ftAttempts: number;
-    ftPercent: number;
-    offensiveRb: number;
-    defensiveRb: number;
-    totalRb: number;
-    assists: number;
-    steals: number;
-    blocks: number;
-    turnovers: number;
-    points: number;
-    team: string;
-    season: number;
-    playerId: string;
-  }
+ 
   

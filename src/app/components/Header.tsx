@@ -57,10 +57,10 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/contato"
+                href="/leaderboard"
                 className="hover:text-gray-400 transition-colors duration-200"
               >
-                Contato
+                Leaderboard
               </Link>
             </li>
           </ul>
