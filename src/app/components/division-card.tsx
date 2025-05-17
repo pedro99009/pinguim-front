@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import type { TeamStats } from "@/interfaces/api";
 import { TeamCard } from "./team-card";
-import {  getTeams } from "@/services/api";
+import {  getTeamsByDivison } from "@/services/api";
 
 
 interface DivisionCardProps {
@@ -19,7 +19,7 @@ export function DivisionCard({ division }: DivisionCardProps) {
     async function fetchTeams() {
       setLoading(true);
       try {
-        const data = await getTeams(division);
+        const data = await getTeamsByDivison(division);
         // A API retorna resultSets[0].headers e resultSets[0].rowSet
         const { headers, rowSet } = data.resultSets[0];
         const mapped: TeamStats[] = rowSet.map((row: any[]) => {
