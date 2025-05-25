@@ -63,6 +63,27 @@ export async function getPlayersByTeam (teamId: string) {
   return data;
 };
 
+export async function getPlayersById(playerId: string) {
+  const response = await fetch(
+    `${API_BASE_URL}/playerById?playerId=${playerId}`
+);
+  if (!response.ok) {
+    throw new Error("Erro ao buscar jogadores do time");
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export async function getPlayerCareerStats(playerId: string) {
+  const response = await fetch (`${API_BASE_URL}/playerCareerStats?playerId=${playerId}`);
+  if (!response.ok) {
+    throw new Error("Erro ao buscar jogadores do time");
+  }
+  const data = await response.json();
+  return data;
+}
+
 
 
 

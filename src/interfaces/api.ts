@@ -71,6 +71,48 @@ export interface PlayerIndex {
   TO_YEAR: number;
 }
 
+export interface PlayerCareerStats {
+  PLAYER_ID: number;
+  SEASON_ID: string;
+  LEAGUE_ID: string;
+  TEAM_ID: number;
+  TEAM_ABBREVIATION: string;
+  PLAYER_AGE: number;
+  GP: number; // Games Played
+  GS: number; // Games Started
+  MIN: number; // Minutes
+  FGM: number; // Field Goals Made
+  FGA: number; // Field Goals Attempted
+  FG_PCT: number; // Field Goal Percentage
+  FG3M: number; // 3-Point Field Goals Made
+  FG3A: number; // 3-Point Field Goals Attempted
+  FG3_PCT: number; // 3-Point Percentage
+  FTM: number; // Free Throws Made
+  FTA: number; // Free Throws Attempted
+  FT_PCT: number; // Free Throw Percentage
+  OREB: number; // Offensive Rebounds
+  DREB: number; // Defensive Rebounds
+  REB: number; // Total Rebounds
+  AST: number; // Assists
+  STL: number; // Steals
+  BLK: number; // Blocks
+  TOV: number; // Turnovers
+  PF: number; // Personal Fouls
+  PTS: number; // Points
+}
+
+export interface PlayerBasicInfo {
+  PLAYER_ID: number;
+  PLAYER_NAME: string;
+  PLAYER_FIRST_NAME?: string;
+  PLAYER_LAST_NAME?: string;
+  PLAYER_AGE?: number;
+  POSITION?: string;
+  HEIGHT?: string;
+  WEIGHT?: string;
+  TEAM_ID?: number;
+}
+
 
   
   
