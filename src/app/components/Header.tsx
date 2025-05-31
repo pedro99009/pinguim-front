@@ -18,7 +18,7 @@ export default function Header() {
           <span className="ml-3 text-xl font-semibold">Pinguim Stats</span>
         </div>
 
-        
+        <SearchBar/>
 
         {/* Menu de navegação */}
         <nav>

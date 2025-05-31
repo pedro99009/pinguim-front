@@ -84,7 +84,37 @@ export async function getPlayerCareerStats(playerId: string) {
   return data;
 }
 
+export async function getAllTeams() {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/teams` // Sem parâmetros, retorna todos os times
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch all teams");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in getAllTeams:", error);
+    throw error;
+  } 
+}
 
+export async function getAllPlayers(season?: string) {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/allPlayers?season=${encodeURIComponent(season || "2024-25")}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch player list");
+    }
+    const data = await response.json();
+    return data; // Espera-se que data.resultSets[0].rowSet e data.resultSets[0].headers existam
+  } catch (error) {
+    console.error("Error in getAllPlayers:", error);
+    throw error;
+  }
+}
 
 
 

@@ -87,6 +87,7 @@ export interface PlayerIndex {
   FROM_YEAR: number;
   TO_YEAR: number;
   BIRTHDATE: number;
+    
 }
 
 export interface PlayerCareerStats {
