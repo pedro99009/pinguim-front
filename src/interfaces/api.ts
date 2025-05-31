@@ -6,6 +6,23 @@ export interface Team {
   ABBREVIATION: string;
 };
 
+export interface CommonTeamRoster {
+  TEAM_ID: number;
+  SEASON: string;
+  PLAYER_ID: number;
+  PLAYER: string;
+  NICKNAME: string;
+  NUM: string;
+  POSITION: string;
+  HEIGHT: string;
+  WEIGHT: string;
+  BIRTH_DATE: string;
+  AGE: number;
+  EXP: string; // Anos de experiência ou "R" para rookie
+  SCHOOL: string;
+  PLAYER_SLUG: string;
+}
+
 export interface TeamInfoCommon {
   TEAM_ID: number;
   SEASON_YEAR: string;
