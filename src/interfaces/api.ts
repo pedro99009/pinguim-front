@@ -69,6 +69,7 @@ export interface PlayerIndex {
   STATS_TIMEFRAME: string;
   FROM_YEAR: number;
   TO_YEAR: number;
+  BIRTHDATE: number;
 }
 
 export interface PlayerCareerStats {
@@ -111,6 +112,23 @@ export interface PlayerBasicInfo {
   HEIGHT?: string;
   WEIGHT?: string;
   TEAM_ID?: number;
+}
+
+export interface CommonTeamRoster {
+  TEAM_ID: number;
+  SEASON: string;
+  PLAYER_ID: number;
+  PLAYER: string;
+  NICKNAME: string;
+  NUM: string;
+  POSITION: string;
+  HEIGHT: string;
+  WEIGHT: string;
+  BIRTH_DATE: string;
+  AGE: number;
+  EXP: string; // Anos de experiência ou "R" para rookie
+  SCHOOL: string;
+  PLAYER_SLUG: string;
 }
 
 
