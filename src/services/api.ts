@@ -32,7 +32,7 @@ export async function getTeamsById(teamId: string) {
   }
 }
 
-export async function getClassification(conference: 'East' | 'West', season: string) {
+export async function getClassification(conference: 'East' | 'West' | 'Overall', season: string) {
   try {
     // Inclui o query string ?conference=East ou ?conference=West
     const response = await fetch(
@@ -115,7 +115,35 @@ export async function getAllPlayers(season?: string) {
     throw error;
   }
 }
+// Dados totais 
+export async function getTeamAverageStats(season: string, perMode: string = 'PerGame') {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/teamStats?season=${encodeURIComponent(season)}&PerMode=${encodeURIComponent(perMode)}&MeasureType=Base`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch team average stats");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in getTeamAverageStats:", error);
+    throw error;
+  }
+}
 
-
-
-
+export async function getTeamEfficiencyStats(season: string, perMode: string = 'Per100Possessions') {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/teamStats?season=${encodeURIComponent(season)}&PerMode=${encodeURIComponent(perMode)}&MeasureType=Advanced`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch team efficiency stats");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error in getTeamEfficiencyStats:", error);
+    throw error;
+  }
+}

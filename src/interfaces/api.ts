@@ -149,8 +149,48 @@ export interface CommonTeamRoster {
   PLAYER_SLUG: string;
 }
 
-
-  
-  
- 
-  
+export interface TeamAdvancedStats  {
+  TEAM_ID: number;
+  TEAM_NAME: string;
+  GP: number; // Jogos disputados
+  W: number; // Vitórias
+  L: number; // Derrotas
+  W_PCT: number; // Porcentagem de vitórias
+  MIN: number; // Minutos jogados
+  PTS: number; // Pontos por jogo
+  FGM: number; // Arremessos de quadra convertidos
+  FGA: number; // Arremessos de quadra tentados
+  FG_PCT: number; // Porcentagem de arremessos de quadra
+  FG3M: number; // Arremessos de 3 pontos convertidos
+  FG3A: number; // Arremessos de 3 pontos tentados
+  FG3_PCT: number; // Porcentagem de arremessos de 3 pontos
+  FTM: number; // Lances livres convertidos
+  FTA: number; // Lances livres tentados
+  FT_PCT: number; // Porcentagem de lances livres
+  OREB: number; // Rebotes ofensivos
+  DREB: number; // Rebotes defensivos
+  REB: number; // Rebotes totais
+  AST: number; // Assistências
+  TOV: number; // Turnovers
+  STL: number; // Roubos de bola
+  BLK: number; // Tocos
+  BLKA: number; // Tocos sofridos
+  PF: number; // Faltas pessoais
+  PFD: number; // Faltas recebidas
+  // Dados com ? são dados que veem apenas quando o perMode é advenced
+  PLUS_MINUS: number; // Saldo de pontos
+  OFF_RATING?: number; // Eficiência ofensiva
+  DEF_RATING?: number; // Eficiência defensiva
+  NET_RATING?: number; // Eficiência líquida
+  AST_PCT?: number; // Porcentagem de assistências
+  AST_TO?: number; // Assistências por turnover
+  AST_RATIO?: number; // Taxa de assistências
+  OREB_PCT?: number; // Porcentagem de rebotes ofensivos
+  DREB_PCT?: number; // Porcentagem de rebotes defensivos
+  REB_PCT?: number; // Porcentagem de rebotes totais
+  TM_TOV_PCT?: number; // Porcentagem de turnovers do time
+  EFG_PCT?: number; // Porcentagem efetiva de arremessos de quadra
+  TS_PCT?: number; // Porcentagem de arremessos verdadeiros
+  PACE?: number; // Ritmo de jogo
+  PIE?: number; // Índice de eficiência do jogador
+}  

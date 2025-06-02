@@ -31,25 +31,26 @@ export default function Header() {
                 Home
               </Link>
             </li>
-            <li>
+            {/*<li>
               <Link
                 href="/estatisticas"
                 className="hover:text-gray-400 transition-colors duration-200"
               >
                 Estatísticas
               </Link>
-            </li>
+            </li>*/}
             <li>
               <Link
-                href="/jogadores"
+                href="/dashboard"
                 className="hover:text-gray-400 transition-colors duration-200"
               >
-                Jogadores
+                Dashboard
               </Link>
             </li>
+            
             <li>
               <Link
-                href="/times"
+                href="/"
                 className="hover:text-gray-400 transition-colors duration-200"
               >
                 Times
